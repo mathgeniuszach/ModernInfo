@@ -1,0 +1,16 @@
+[
+{
+  "modid": "${archivesBaseName}",
+  "name": "Bow Charge",
+  "description": "Shows how charged your bow truly is.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["mathgeniuszach"],
+  "credits": "mathgeniuszach",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

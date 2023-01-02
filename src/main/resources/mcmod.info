@@ -1,11 +1,11 @@
 [
 {
   "modid": "${archivesBaseName}",
-  "name": "Bow Charge",
-  "description": "Shows how charged your bow truly is.",
+  "name": "Modern Info",
+  "description": "Shows information available in modern versions of Minecraft.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://github.com/xMGZx/BowCharge",
+  "url": "https://github.com/xMGZx/ModernInfo",
   "updateUrl": "",
   "authorList": ["mathgeniuszach"],
   "credits": "mathgeniuszach",

@@ -1,0 +1,10 @@
+{
+    "required": true,
+    "package": "com.mathgeniuszach.moderninfo.mixin",
+    "refmap": "mixins.moderninfo.refmap.json",
+    "target": "@env(DEFAULT)",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "EntityLivingBaseMixin"
+    ]
+}

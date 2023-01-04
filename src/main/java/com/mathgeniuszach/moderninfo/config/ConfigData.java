@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
 
-public class ModernInfoConfig {
+public class ConfigData {
     public static Configuration CONFIG;
 
     public static int xOffset;
@@ -49,7 +49,7 @@ public class ModernInfoConfig {
 
     public static boolean customNamesVisible;
 
-    public ModernInfoConfig(File file) {
+    public ConfigData(File file) {
         MinecraftForge.EVENT_BUS.register(this);
         CONFIG = new Configuration(file);
         CONFIG.load();
@@ -57,39 +57,44 @@ public class ModernInfoConfig {
     }
 
     public static void loadConfig() {
-        xOffset = CONFIG.get("bow", "barXOffset", 0).getInt();
-        yOffset = CONFIG.get("bow", "barYOffset", -20).getInt();
-        width = CONFIG.get("bow", "barWidth", 50).getInt();
-        height = CONFIG.get("bow", "barHeight", 5).getInt();
+        try {
+            xOffset = CONFIG.get("bow", "barXOffset", 0).getInt();
+            yOffset = CONFIG.get("bow", "barYOffset", -20).getInt();
+            width = CONFIG.get("bow", "barWidth", 50).getInt();
+            height = CONFIG.get("bow", "barHeight", 5).getInt();
 
-        backgroundColor = getConfigColor("bow", "colorBackground", "80000000");
-        defaultColor = getConfigColor("bow", "colorDefault", "80EEEEEE");
-        disabledColor = getConfigColor("bow", "colorDisabled", "80808080");
-        criticalColor = getConfigColor("bow", "colorCritical", "80FF0000");
+            backgroundColor = getConfigColor("bow", "colorBackground", "80000000");
+            defaultColor = getConfigColor("bow", "colorDefault", "80EEEEEE");
+            disabledColor = getConfigColor("bow", "colorDisabled", "80808080");
+            criticalColor = getConfigColor("bow", "colorCritical", "80FF0000");
 
-        pullingOnly = CONFIG.get("bow", "pullingOnly", false).getBoolean();
-        bowBarDisabled = CONFIG.get("bow", "barDisabled", false).getBoolean();
-
-
-
-        meleeMarker = CONFIG.get("melee", "markerText", "-+-").getString();
-
-        meleeXOffset = CONFIG.get("melee", "markerXOffset", 0).getInt();
-        meleeYOffset = CONFIG.get("melee", "markerYOffset", -20).getInt();
-
-        meleeMarkerColor = getConfigColor("melee", "markerDefaultColor", "FFFFFF");
-        meleeMarkerCritColor = getConfigColor("melee", "markerCritColor", "FF0000");
-
-        meleeMarkerOnPlayers = CONFIG.get("melee", "showOnPlayers", false).getBoolean();
-        meleeMarkerDisabled = CONFIG.get("melee", "disabled", false).getBoolean();
+            pullingOnly = CONFIG.get("bow", "pullingOnly", false).getBoolean();
+            bowBarDisabled = CONFIG.get("bow", "barDisabled", false).getBoolean();
 
 
 
-        customNamesVisible = CONFIG.get("other", "customNamesVisible", true).getBoolean();
+            meleeMarker = CONFIG.get("melee", "markerText", "-+-").getString();
+
+            meleeXOffset = CONFIG.get("melee", "markerXOffset", 0).getInt();
+            meleeYOffset = CONFIG.get("melee", "markerYOffset", -20).getInt();
+
+            meleeMarkerColor = getConfigColor("melee", "markerDefaultColor", "FFFFFF");
+            meleeMarkerCritColor = getConfigColor("melee", "markerCritColor", "FF0000");
+
+            meleeMarkerOnPlayers = CONFIG.get("melee", "showOnPlayers", false).getBoolean();
+            meleeMarkerDisabled = CONFIG.get("melee", "disabled", false).getBoolean();
 
 
 
-        if (CONFIG.hasChanged()) CONFIG.save();
+            customNamesVisible = CONFIG.get("other", "customNamesVisible", true).getBoolean();
+
+
+
+            if (CONFIG.hasChanged()) CONFIG.save();
+        } catch (Exception e) {
+            System.err.println("Error in ConfigData!!!");
+            e.printStackTrace();
+        }
     }
 
     public static int getConfigColor(String category, String key, String defColor) {
@@ -137,9 +142,9 @@ public class ModernInfoConfig {
     @SideOnly(Side.CLIENT)
 	public List<IConfigElement> getClientGuiElements() {
         List<IConfigElement> list = new ArrayList<IConfigElement>();
-        list.add(new ConfigElement(ModernInfoConfig.CONFIG.getCategory("bow")));
-        list.add(new ConfigElement(ModernInfoConfig.CONFIG.getCategory("melee")));
-        list.add(new ConfigElement(ModernInfoConfig.CONFIG.getCategory("other")));
+        list.add(new ConfigElement(ConfigData.CONFIG.getCategory("bow")));
+        list.add(new ConfigElement(ConfigData.CONFIG.getCategory("melee")));
+        list.add(new ConfigElement(ConfigData.CONFIG.getCategory("other")));
         return list;
 	}
 	
@@ -150,7 +155,7 @@ public class ModernInfoConfig {
     @SubscribeEvent
 	public void onConfigChanged(OnConfigChangedEvent event) {
 		if (event.modID.equalsIgnoreCase(ModernInfo.MODID)) {
-			ModernInfoConfig.loadConfig();
+			ConfigData.loadConfig();
 		}
 	}
 }

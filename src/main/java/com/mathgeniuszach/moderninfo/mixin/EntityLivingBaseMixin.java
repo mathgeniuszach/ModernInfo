@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.mathgeniuszach.moderninfo.config.ModernInfoConfig;
+import com.mathgeniuszach.moderninfo.config.ConfigData;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,7 +17,7 @@ public abstract class EntityLivingBaseMixin extends Entity {
 
     @Inject(method = "getAlwaysRenderNameTagForRender", at = @At("HEAD"), cancellable = true)
     private void getAlwaysRenderNameTag(CallbackInfoReturnable<Boolean> ci) {
-        if (ModernInfoConfig.customNamesVisible && this.hasCustomName()) {
+        if (ConfigData.customNamesVisible && this.hasCustomName()) {
             ci.setReturnValue(true);
         }
     }

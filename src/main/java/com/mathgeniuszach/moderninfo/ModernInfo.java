@@ -1,6 +1,6 @@
 package com.mathgeniuszach.moderninfo;
 
-import com.mathgeniuszach.moderninfo.config.ModernInfoConfig;
+import com.mathgeniuszach.moderninfo.config.ConfigData;
 import com.mathgeniuszach.moderninfo.proxy.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.event.*;
 public class ModernInfo
 {
     public static final String MODID = "moderninfo";
-    public static final String VERSION = "1.1";
+    public static final String VERSION = "1.2";
 
     @Mod.Instance(ModernInfo.MODID)
     public static ModernInfo INSTANCE;
@@ -27,11 +27,11 @@ public class ModernInfo
     )
     public static CommonProxy PROXY;
 
-    public static ModernInfoConfig CONFIG;
+    public static ConfigData CONFIG;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        CONFIG = new ModernInfoConfig(event.getSuggestedConfigurationFile());
+        CONFIG = new ConfigData(event.getSuggestedConfigurationFile());
         PROXY.preInit(event);
     }
 

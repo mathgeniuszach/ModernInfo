@@ -1,5 +1,7 @@
 package com.mathgeniuszach.moderninfo;
 
+import org.lwjgl.opengl.GL11;
+
 import com.mathgeniuszach.moderninfo.config.ConfigData;
 
 import net.minecraft.client.Minecraft;
@@ -28,6 +30,9 @@ public class BowChargeGui extends Gui {
                 // Critical zone
                 color = ConfigData.criticalColor;
             }
+            
+            GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
+            GL11.glPushMatrix();
 
             // Outer Rect
             drawRect(
@@ -45,6 +50,9 @@ public class BowChargeGui extends Gui {
                 screenHeight/2+ConfigData.height+ConfigData.yOffset,
                 color
             );
+            
+            GL11.glPopMatrix();
+            GL11.glPopAttrib();
         } catch (Exception e) {
             System.err.println("Error in BowChargeGui!!!");
             e.printStackTrace();

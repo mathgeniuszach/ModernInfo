@@ -25,7 +25,7 @@ public class ClientEventHandler {
     @SubscribeEvent(receiveCanceled = true)
     public void onEvent(RenderGameOverlayEvent.Pre event) {
         try {
-            if (event.type == ElementType.CROSSHAIRS) {
+            if (event.type == ElementType.HOTBAR) {
                 Minecraft minecraft = Minecraft.getMinecraft();
 
                 EntityPlayer player = minecraft.thePlayer;

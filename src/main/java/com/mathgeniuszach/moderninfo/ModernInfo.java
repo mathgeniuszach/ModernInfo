@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.event.*;
 public class ModernInfo
 {
     public static final String MODID = "moderninfo";
-    public static final String VERSION = "1.3";
+    public static final String VERSION = "1.4";
 
     @Mod.Instance(ModernInfo.MODID)
     public static ModernInfo INSTANCE;

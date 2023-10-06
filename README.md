@@ -14,6 +14,10 @@ Mostly everything in this mod can be configured or disabled in-game through the 
 
 This mod will not be ported to any other versions.
 
+## Contact
+
+Contact me on [Discord](https://discord.gg/pBFqEcXvW5) and support me on [Ko-Fi](https://ko-fi.com/mathgeniuszach)!
+
 ## Screenshots
 
 ![Bow](screenshots/Bow.gif)
